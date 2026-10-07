@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paintball Apocalipse 16 | Queimados - RJ</title>
+<meta name="description" content="Paintball Apocalipse 16, em Queimados (RJ). Mais de 10.000 m² de campo com selva e área urbana. Monte seu time e reserve pelo WhatsApp.">
+<meta name="theme-color" content="#0a0908">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Oswald:wght@400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0908;
+    --bg-2: #121010;
+    --card: #181513;
+    --line: #ffffff17;
+    --text: #f2ede6;
+    --muted: #9e968c;
+    --fire: #ff5a1f;
+    --ember: #ffad33;
+    --green: #a6c93a;
+    --radius: 10px;
+    --pad: clamp(64px, 10vw, 140px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font: 400 17px/1.65 Inter, system-ui, sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  body.lock { overflow: hidden; }
+  /* granulado de filme */
+  body::after { content: ""; position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: .07;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  h1, h2, h3 { font-family: Oswald, Impact, sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1; letter-spacing: .005em; }
+  h2 { font-size: clamp(2.1rem, 5vw, 3.6rem); margin-bottom: 18px; }
+  h2 em, h1 em { font-style: normal; color: var(--fire); }
+  .wrap { width: min(1200px, 100% - 32px); margin-inline: auto; }
+  section { padding: var(--pad) 0; position: relative; scroll-margin-top: 40px; }
+  .kicker { font-family: Oswald, sans-serif; font-weight: 600; color: var(--green); letter-spacing: .25em; text-transform: uppercase; font-size: .78rem; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .kicker span { color: var(--muted); }
+  .lead { color: var(--muted); max-width: 560px; font-size: clamp(1rem, 1.6vw, 1.08rem); }
+  .ico { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+  .btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: 4px; font-family: Oswald, sans-serif; font-weight: 600; text-decoration: none; text-transform: uppercase; letter-spacing: .1em; font-size: .95rem; transition: background .2s, color .2s, border-color .2s, transform .2s; }
+  .btn-fire { background: var(--fire); color: #fff; }
+  .btn-fire::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, #ffffff55 50%, transparent 70%); translate: -100% 0; transition: translate .6s; }
+  .btn-fire:hover { background: #ff7036; transform: translateY(-2px); }
+  .btn-fire:hover::after { translate: 100% 0; }
+  .btn-line { border: 1px solid #ffffff40; }
+  .btn-line:hover { border-color: var(--text); background: #ffffff0d; }
+  .btn svg { width: 20px; height: 20px; fill: currentColor; position: relative; }
+  :focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; }
+
+  /* NAV */
+  header { position: fixed; inset: 0 0 auto; z-index: 50; transition: background .3s, border-color .3s; border-bottom: 1px solid transparent; }
+  header.solid { background: #0a0908e6; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; position: relative; z-index: 2; }
+  .logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: 38% 58%; }
+  .logo span { font-family: Oswald, sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 1.05rem; line-height: 1; white-space: nowrap; }
+  .logo b { font-family: "Black Ops One", sans-serif; font-weight: 400; color: var(--fire); }
+  nav ul { display: flex; gap: 32px; list-style: none; }
+  nav a { text-decoration: none; font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: .12em; font-size: .85rem; color: #d5cec5; transition: color .2s; }
+  nav a:hover { color: var(--fire); }
+  .head-cta { display: flex; align-items: center; gap: 8px; position: relative; z-index: 2; }
+  header .btn { padding: 10px 18px; font-size: .85rem; }
+  .burger { display: none; width: 44px; height: 44px; place-items: center; }
+  .burger span { display: block; width: 24px; height: 2px; background: var(--text); position: relative; transition: background .2s; }
+  .burger span::before, .burger span::after { content: ""; position: absolute; left: 0; width: 24px; height: 2px; background: var(--text); transition: transform .3s, top .3s; }
+  .burger span::before { top: -7px; } .burger span::after { top: 7px; }
+  header.open .burger span { background: transparent; }
+  header.open .burger span::before { top: 0; transform: rotate(45deg); }
+  header.open .burger span::after { top: 0; transform: rotate(-45deg); }
+  @media (max-width: 960px) {
+    .burger { display: grid; }
+    header.open { backdrop-filter: none; -webkit-backdrop-filter: none; }
+    header.open ~ .wa-float { opacity: 0; pointer-events: none; }
+    nav { position: fixed; inset: 0; z-index: 1; height: 100dvh; background: var(--bg); display: grid; place-items: center; opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+    nav ul { flex-direction: column; align-items: center; gap: 26px; }
+    nav li { opacity: 0; translate: 0 16px; transition: opacity .4s, translate .4s; }
+    nav a { font-size: 1.8rem; color: var(--text); }
+    header.open nav { opacity: 1; visibility: visible; }
+    header.open nav li { opacity: 1; translate: 0 0; }
+    header.open nav li:nth-child(2) { transition-delay: .05s; } header.open nav li:nth-child(3) { transition-delay: .1s; }
+    header.open nav li:nth-child(4) { transition-delay: .15s; } header.open nav li:nth-child(5) { transition-delay: .2s; } header.open nav li:nth-child(6) { transition-delay: .25s; }
+  }
+  @media (max-width: 420px) { .logo span { font-size: .92rem; } .logo img { width: 34px; height: 34px; } header .btn { padding: 9px 12px; font-size: .78rem; } }
+
+  /* HERO */
+  .hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 130px 0 0; overflow: hidden; isolation: isolate; }
+  .hero-img { position: absolute; z-index: -2; top: 0; right: 0; height: 100%; width: min(52%, 720px); object-fit: cover; object-position: 50% 8%; opacity: .75;
+    translate: 0 var(--py, 0px); animation: kenburns 18s ease-in-out infinite alternate;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%), linear-gradient(0deg, transparent 18%, #000 55%); -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent, #000 45%), linear-gradient(0deg, transparent 18%, #000 55%); mask-composite: intersect; }
+  @keyframes kenburns { from { scale: 1; } to { scale: 1.08; } }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse 60% 50% at 75% 55%, #ff5a1f2e, transparent 70%), linear-gradient(0deg, var(--bg) 0, transparent 35%), linear-gradient(180deg, #0a0908cc, transparent 140px); }
+  .hero-body { padding-bottom: clamp(40px, 7vw, 70px); max-width: 760px; }
+  .hero-body > * { animation: up .9s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-body > :nth-child(2) { animation-delay: .1s; } .hero-body > :nth-child(3) { animation-delay: .2s; } .hero-body > :nth-child(4) { animation-delay: .3s; }
+  @keyframes up { from { opacity: 0; translate: 0 30px; } }
+  .hero h1 { font-size: clamp(2.6rem, 6.6vw, 5.8rem); line-height: .92; margin: 6px 0 24px; }
+  .hero h1 .num { font-family: "Black Ops One", sans-serif; font-weight: 400; color: var(--fire); }
+  .hero .lead { color: #cfc7bd; font-size: clamp(1rem, 1.8vw, 1.15rem); margin-bottom: 34px; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+  .hero-stats div { padding: 24px 0; display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: .92rem; line-height: 1.4; }
+  .hero-stats div + div { padding-left: 24px; border-left: 1px solid var(--line); }
+  .hero-stats strong { display: block; color: var(--text); font-family: Oswald, sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: .03em; line-height: 1.2; }
+  .hero-stats .ico { width: 30px; height: 30px; color: var(--fire); }
+  .scroll-cue { position: absolute; left: 50%; bottom: 120px; width: 22px; height: 36px; border: 2px solid #ffffff40; border-radius: 12px; translate: -50%; display: none; }
+  .scroll-cue::after { content: ""; position: absolute; left: 50%; top: 6px; width: 3px; height: 7px; border-radius: 2px; background: var(--fire); translate: -50%; animation: cue 1.6s infinite; }
+  @keyframes cue { to { top: 18px; opacity: 0; } }
+  @media (min-width: 1100px) and (min-height: 820px) { .scroll-cue { display: block; } }
+  @media (max-width: 760px) {
+    .hero { padding-top: 110px; }
+    .hero-img { width: 100%; opacity: .28; -webkit-mask-image: linear-gradient(0deg, transparent 10%, #000 60%); mask-image: linear-gradient(0deg, transparent 10%, #000 60%); }
+    .hero-cta .btn { flex: 1 1 220px; }
+    .hero-stats { grid-template-columns: 1fr; }
+    .hero-stats div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+    .hero-stats div { padding: 16px 0; }
+  }
+
+  .embers { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+  .embers i { position: absolute; bottom: -10px; width: 3px; height: 3px; border-radius: 50%; background: var(--ember); box-shadow: 0 0 6px var(--fire); animation: rise linear infinite; opacity: 0; }
+  @keyframes rise { 15% { opacity: .9; } 100% { transform: translate(var(--dx), -100vh); opacity: 0; } }
+
+  /* TOUR DA ARENA (carrossel) */
+  .tour { padding-bottom: 0; }
+  .tour-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+  .stage { position: relative; margin-top: 40px; }
+  .stage > button { position: absolute; top: 50%; z-index: 3; translate: 0 -50%; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center;
+    background: #0a0908b3; border: 1px solid #ffffff33; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 8px 24px #0008; transition: background .2s, border-color .2s, scale .2s; }
+  .stage > button:hover { background: var(--fire); border-color: var(--fire); scale: 1.08; }
+  .stage > button svg { width: 24px; height: 24px; }
+  .stage .prev { left: max(28px, (100% - 1200px) / 2 + 16px); }
+  .stage .next { right: 28px; }
+  .track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    padding-inline: max(16px, (100% - 1200px) / 2); scroll-padding-inline: max(16px, (100% - 1200px) / 2); scrollbar-width: none; }
+  .track::-webkit-scrollbar { display: none; }
+  .slide { position: relative; flex: 0 0 min(78%, 920px); aspect-ratio: 16/9; max-height: 72vh; border-radius: var(--radius); overflow: hidden; scroll-snap-align: start; background: var(--card); }
+  .slide img { width: 100%; height: 100%; object-fit: cover; scale: 1.08; transition: scale 1.2s cubic-bezier(.2,.7,.2,1), filter 1.2s; filter: brightness(.6) saturate(.8); }
+  .slide.active img { scale: 1; filter: brightness(.9) saturate(1); }
+  .slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, #000d, transparent 50%); }
+  .slide figcaption { position: absolute; z-index: 1; left: clamp(18px, 3vw, 36px); right: 18px; bottom: clamp(16px, 3vw, 32px); translate: 0 12px; opacity: 0; transition: .7s .2s; }
+  .slide.active figcaption { translate: 0 0; opacity: 1; }
+  .slide figcaption small { font-family: "Black Ops One", sans-serif; color: var(--fire); letter-spacing: .1em; }
+  .slide figcaption h3 { font-size: clamp(1.5rem, 3.4vw, 2.6rem); margin: 4px 0 6px; }
+  .slide figcaption p { color: #d5cec5; max-width: 520px; font-size: clamp(.88rem, 1.5vw, 1rem); }
+  .tour-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 22px; }
+  .dots { display: flex; gap: 8px; }
+  .dots button { position: relative; width: 28px; height: 24px; background: linear-gradient(var(--line), var(--line)) center/100% 4px no-repeat; transition: width .3s; }
+  .dots button.on { width: 56px; }
+  .dots button.on::after { content: ""; position: absolute; left: 0; top: 10px; height: 4px; width: 0; background: var(--fire); animation: fill 5s linear forwards; }
+  .note { color: var(--muted); font-size: .78rem; }
+  @media (max-width: 760px) { .slide { flex-basis: 88%; aspect-ratio: 4/5; } .stage > button { width: 44px; height: 44px; } .stage .prev { left: 24px; } .stage .next { right: 20px; } }
+
+  /* ARENA (zonas) */
+  .arena-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .arena-photo { position: relative; aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden; background: var(--card); }
+  .arena-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; scale: 1.06; transition: opacity .8s, scale 1.6s cubic-bezier(.2,.7,.2,1); }
+  .arena-photo img.on { opacity: 1; scale: 1; }
+  .arena-photo figcaption { position: absolute; right: 0; bottom: 24px; background: var(--fire); color: #fff; padding: 14px 20px; font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: .06em; line-height: 1.15; border-radius: 4px 0 0 4px; }
+  .arena-photo figcaption b { display: block; font-size: 2rem; }
+  .zones { margin-top: 32px; border-top: 1px solid var(--line); }
+  .zone { width: 100%; text-align: left; display: grid; grid-template-columns: 52px 1fr; gap: 18px; padding: 24px 12px 24px 0; border-bottom: 1px solid var(--line); position: relative; transition: padding .3s; }
+  .zone::before { content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: 0; background: var(--fire); }
+  .zone.on::before { animation: fill var(--t, 5s) linear forwards; }
+  .zone.on.held::before { animation: none; width: 100%; }
+  @keyframes fill { to { width: 100%; } }
+  .zone .ico { width: 46px; height: 46px; padding: 10px; border-radius: 50%; border: 1px solid var(--line); color: var(--muted); transition: color .3s, border-color .3s, background .3s; }
+  .zone.on .ico { color: #fff; background: var(--fire); border-color: var(--fire); }
+  .zone strong { display: block; font-family: Oswald, sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1; font-size: 1.4rem; margin-bottom: 8px; transition: color .3s; color: var(--muted); }
+  .zone.on strong { color: var(--text); }
+  .zone p { color: var(--muted); font-size: .97rem; }
+  @media (max-width: 860px) { .arena-grid { grid-template-columns: 1fr; } .arena-photo { aspect-ratio: 4/3; order: 2; } }
+
+  /* DIFERENCIAIS */
+  .alt { background: var(--bg-2); }
+  .feats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 56px; border-top: 1px solid var(--line); }
+  .feat { padding: 34px 28px 10px 0; position: relative; }
+  .feat + .feat { padding-left: 28px; border-left: 1px solid var(--line); }
+  .feat::before { content: ""; position: absolute; top: -1px; left: 0; height: 2px; width: 0; background: var(--fire); transition: width .5s; }
+  .feat:hover::before { width: 100%; }
+  .feat .n { font-family: "Black Ops One", sans-serif; color: var(--fire); font-size: 1rem; letter-spacing: .1em; }
+  .feat h3 { font-size: 1.35rem; margin: 18px 0 10px; }
+  .feat p { color: var(--muted); font-size: .95rem; }
+  @media (max-width: 960px) { .feats { grid-template-columns: 1fr 1fr; } .feat:nth-child(3) { padding-left: 0; border-left: 0; } .feat:nth-child(n+3) { border-top: 1px solid var(--line); } .feat { padding-bottom: 30px; } }
+  @media (max-width: 560px) { .feats { grid-template-columns: 1fr; } .feat + .feat { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } .feat { padding: 26px 0; } .feat h3 { margin-top: 10px; } }
+
+  /* GALERIA */
+  .gal-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .gallery { display: grid; grid-template-columns: 1.5fr 1fr 1fr; grid-template-rows: 280px 280px; gap: 12px; margin-top: 48px; }
+  .gallery figure { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--card); }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+  .gallery figure:hover img { transform: scale(1.05); }
+  .gallery figure::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, #000a, transparent 40%); }
+  .gallery figcaption { position: absolute; left: 18px; bottom: 14px; z-index: 1; font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
+  .gallery .g1 { grid-row: span 2; }
+  .gallery .g4 { grid-column: span 2; }
+  @media (max-width: 860px) { .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: none; grid-auto-rows: 220px; } .gallery .g1 { grid-column: span 2; grid-row: span 1; } }
+  @media (max-width: 480px) { .gallery { grid-auto-rows: 170px; gap: 8px; } }
+
+  /* EVENTOS */
+  .event { display: grid; grid-template-columns: 380px 1fr; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); margin-top: 48px; }
+  .event-img { overflow: hidden; }
+  .event img { width: 100%; height: 100%; min-height: 360px; object-fit: cover; object-position: 50% 15%; transition: transform .8s; }
+  .event:hover img { transform: scale(1.04); }
+  .event-body { padding: clamp(24px, 4vw, 52px); display: flex; flex-direction: column; justify-content: center; }
+  .event-body .tag { align-self: flex-start; font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: .15em; font-size: .75rem; color: #ff4f9a; border: 1px solid #ff4f9a66; padding: 4px 10px; border-radius: 3px; margin-bottom: 18px; }
+  .event-body h3 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 14px; }
+  .event-body p { color: var(--muted); max-width: 520px; }
+  .event-body ul { list-style: none; margin: 22px 0 30px; display: grid; gap: 10px; }
+  .event-body li { display: flex; gap: 12px; align-items: flex-start; }
+  .event-body li .ico { color: var(--green); width: 20px; height: 20px; margin-top: 3px; }
+  @media (max-width: 860px) { .event { grid-template-columns: 1fr; } .event img { min-height: 0; aspect-ratio: 16/10; } .event-body .btn { align-self: stretch !important; } }
+
+  /* COMO FUNCIONA */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 56px; counter-reset: s; position: relative; }
+  .steps::before { content: ""; position: absolute; top: 22px; left: 0; right: 0; height: 1px; background: var(--line); }
+  .steps::after { content: ""; position: absolute; top: 22px; left: 0; height: 1px; width: 0; background: var(--fire); transition: width 1.6s cubic-bezier(.2,.7,.2,1) .2s; }
+  .steps.in::after { width: 100%; }
+  .step { counter-increment: s; position: relative; }
+  .step::before { content: counter(s); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--bg); border: 1px solid var(--fire); color: var(--fire); font-family: "Black Ops One", sans-serif; margin-bottom: 22px; position: relative; z-index: 1; }
+  .step h3 { font-size: 1.25rem; margin-bottom: 8px; }
+  .step p { color: var(--muted); font-size: .95rem; }
+  @media (max-width: 860px) {
+    .steps { grid-template-columns: 1fr; gap: 0; }
+    .steps::before, .steps::after { top: 0; bottom: 0; left: 22px; right: auto; width: 1px; height: auto; }
+    .steps::after { height: 0; bottom: auto; transition-property: height; }
+    .steps.in::after { width: 1px; height: 100%; }
+    .step { display: grid; grid-template-columns: 44px 1fr; column-gap: 20px; padding-bottom: 28px; }
+    .step::before { grid-row: span 2; margin: 0; }
+  }
+
+  /* CONTATO */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 28px; margin-top: 48px; }
+  .info { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .info-item { display: flex; gap: 18px; align-items: center; padding: 22px 4px; border-bottom: 1px solid var(--line); text-decoration: none; transition: padding .2s, color .2s; }
+  a.info-item:hover { padding-left: 12px; color: var(--fire); }
+  .info-item svg { width: 26px; height: 26px; flex: none; fill: var(--fire); }
+  .info-item small { display: block; font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: .15em; font-size: .75rem; color: var(--muted); }
+  .info-item span { font-size: 1.05rem; font-weight: 500; }
+  .info .btn { margin-top: 28px; }
+  .map { border-radius: var(--radius); overflow: hidden; min-height: 440px; border: 1px solid var(--line); background: var(--card); }
+  .map iframe { display: block; width: 100%; height: 100%; min-height: 440px; border: 0; filter: invert(.92) hue-rotate(180deg) saturate(.5) brightness(.95); }
+  @media (max-width: 960px) { .contact-grid { grid-template-columns: 1fr; } .map, .map iframe { min-height: 320px; } }
+
+  /* CTA FINAL */
+  .final { text-align: center; overflow: hidden; isolation: isolate; }
+  .final::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url(img/logo-fundo.jpg) center 48%/cover; opacity: .35; }
+  .final::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at center, #0a090855, var(--bg) 75%); }
+  .final h2 { font-size: clamp(2.3rem, 7vw, 5.2rem); line-height: .95; margin-bottom: 22px; }
+  .final p { max-width: 520px; margin: 0 auto 34px; color: #cfc7bd; font-size: clamp(1rem, 1.8vw, 1.1rem); }
+
+  footer { padding: 32px 0 96px; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: var(--text); }
+  @media (min-width: 761px) { footer { padding-bottom: 32px; } }
+
+  .wa-float { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 8px 24px #0009; transition: transform .2s; }
+  .wa-float::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25d366; animation: ping 2.4s infinite; }
+  @keyframes ping { 70%, 100% { scale: 1.6; opacity: 0; } }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+  /* entrada suave ao rolar */
+  .reveal { opacity: 0; translate: 0 28px; transition: opacity .8s ease, translate .8s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+  .reveal.in { opacity: 1; translate: 0 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .embers, .scroll-cue { display: none; }
+    .hero-img, .wa-float::before { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM21.9 7c-.1-1.6-.4-3-1.6-4.2S17.6 1.2 16 1.1C14.4 1 9.6 1 8 1.1 6.4 1.2 5 1.5 3.8 2.7S2.2 5.4 2.1 7C2 8.6 2 13.4 2.1 15c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.1 6.4.1 8 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.1-1.6.1-6.4.2-8zm-2.1 9.8a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.6.4s-4.4.1-5.6-.4a3.3 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.6s-.1-4.4.4-5.6A3.3 3.3 0 0 1 6.8 3.8C8.1 3.3 11 3.4 12.4 3.4s4.4-.1 5.6.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.6s.1 4.3-.4 5.6z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
+    <symbol id="i-area" viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3zM9 3v15M15 6v15"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 2 6 10h3l-4 6h14l-4-6h3zM12 16v6"/></symbol>
+    <symbol id="i-city" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l5-3v16M10 21V11l9 2v8M14 15h1M14 18h1M7 11h1M7 14h1M7 17h1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  </defs>
+</svg>
+
+<header id="top">
+  <div class="wrap">
+    <a href="#topo" class="logo"><img src="img/logo-fundo.jpg" alt=""><span>Apocalipse <b>16</b></span></a>
+    <nav id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="#tour">Tour</a></li>
+        <li><a href="#arena">Terrenos</a></li>
+        <li><a href="#diferenciais">Diferenciais</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="head-cta">
+      <a class="btn btn-fire" href="https://bit.ly/paintballapocalipse16" target="_blank" rel="noopener">Reservar</a>
+      <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="topo">
+    <img class="hero-img" src="img/soldado.jpg" alt="" fetchpriority="high">
+    <div class="embers" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-body">
+        <p class="kicker">Paintball <span>/</span> Queimados · RJ</p>
+        <h1>Você sobreviveria ao <em>apocalipse</em> <span class="num">16</span>?</h1>
+        <p class="lead">Mais de 10.000 m² de campo de batalha entre selva e zona urbana. Monte seu time, vista o equipamento e venha provar.</p>
+        <div class="hero-cta">
+          <a class="btn btn-fire" href="https://bit.ly/paintballapocalipse16" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reserve pelo WhatsApp</a>
+          <a class="btn btn-line" href="#tour">Conhecer a arena</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div><svg class="ico" aria-hidden="true"><use href="#i-trophy"/></svg><p><strong>Top do RJ</strong>Considerado um dos melhores</p></div>
+        <div><svg class="ico" aria-hidden="true"><use href="#i-area"/></svg><p><strong>+<span data-count="10000">10.000</span> m²</strong>de campo de jogo</p></div>
+        <div><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg><p><strong>Selva + urbano</strong>dois terrenos de combate</p></div>
+      </div>
+    </div>
+    <span class="scroll-cue" aria-hidden="true"></span>
+  </section>
+
+  <section class="tour" id="tour">
+    <div class="wrap tour-head reveal">
+      <div>
+        <p class="kicker">01 <span>/</span> Tour pela arena</p>
+        <h2>Bem-vindo <em>ao campo de batalha.</em></h2>
+        <p class="lead">Arraste para o lado e conheça cada canto onde a sua tropa vai lutar.</p>
+      </div>
+    </div>
+    <div class="stage">
+    <button class="prev" aria-label="Foto anterior"><svg class="ico" aria-hidden="true"><use href="#i-left"/></svg></button>
+    <button class="next" aria-label="Próxima foto"><svg class="ico" aria-hidden="true"><use href="#i-right"/></svg></button>
+    <div class="track" aria-roledescription="carrossel" aria-label="Fotos da arena">
+      <figure class="slide"><img src="img/arena-selva.jpg" alt="Jogadores camuflados escondidos entre as árvores da mata" loading="lazy"><figcaption><small>Setor 01</small><h3>Zona de Selva</h3><p>Mata fechada, troncos e trilhas. Aqui vence quem tem paciência e sabe se esconder.</p></figcaption></figure>
+      <figure class="slide"><img src="img/arena-urbano.jpg" alt="Jogador com máscara diante de muros e construções da área urbana" loading="lazy"><figcaption><small>Setor 02</small><h3>Zona Urbana</h3><p>Muros, galpões e ruínas. Combate de curta distância, rápido e sem perdão.</p></figcaption></figure>
+      <figure class="slide"><img src="img/arena-mata.jpg" alt="Jogador mirando entre troncos caídos na mata" loading="lazy" style="object-position:50% 60%"><figcaption><small>Setor 03</small><h3>Trincheiras</h3><p>Troncos e barricadas naturais para segurar a posição ou avançar no flanco.</p></figcaption></figure>
+      <figure class="slide"><img src="img/galera.jpg" alt="Grupo de jogadores reunidos na base do Apocalipse 16" loading="lazy" style="object-position:50% 30%"><figcaption><small>Base</small><h3>Ponto de encontro</h3><p>Onde a tropa se reúne, recebe o equipamento e faz o briefing antes da batalha.</p></figcaption></figure>
+      <figure class="slide"><img src="img/arena-acao.jpg" alt="Jogador atirando protegido atrás de um obstáculo" loading="lazy"><figcaption><small>Em combate</small><h3>Ação de verdade</h3><p>Cobertura, tiro e adrenalina. Cada partida é uma história diferente.</p></figcaption></figure>
+    </div>
+    </div>
+    <div class="wrap tour-foot">
+      <div class="dots" role="tablist" aria-label="Escolher foto"></div>
+      <span class="note">Algumas imagens são ilustrativas.</span>
+    </div>
+  </section>
+
+  <section id="arena">
+    <div class="wrap arena-grid">
+      <figure class="arena-photo reveal">
+        <img class="on" src="img/arena-selva.jpg" alt="Zona de selva" loading="lazy" style="object-position:40% 50%">
+        <img src="img/arena-urbano.jpg" alt="Zona urbana" loading="lazy" style="object-position:55% 50%">
+        <figcaption><b data-count="10000">10.000</b>m² de campo</figcaption>
+      </figure>
+      <div class="reveal">
+        <p class="kicker">02 <span>/</span> Os terrenos</p>
+        <h2>Dois terrenos.<br><em>Um sobrevivente.</em></h2>
+        <p class="lead">Cada partida é uma missão diferente. Alterne entre a mata fechada e as ruínas urbanas e descubra onde sua tropa domina.</p>
+        <div class="zones">
+          <button class="zone on" data-i="0"><svg class="ico" aria-hidden="true"><use href="#i-tree"/></svg><div><strong>Zona de Selva</strong><p>Vegetação fechada, trilhas e esconderijos naturais. Terreno de emboscada, flanco e paciência.</p></div></button>
+          <button class="zone" data-i="1"><svg class="ico" aria-hidden="true"><use href="#i-city"/></svg><div><strong>Zona Urbana</strong><p>Paredes, galpões e corredores marcados de tinta. Combate rápido, onde cada esquina pode ser a última.</p></div></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="diferenciais">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="kicker">03 <span>/</span> Por que o Apocalipse 16</p>
+        <h2>Você só traz <em>a coragem.</em></h2>
+      </div>
+      <div class="feats" data-stagger>
+        <div class="feat"><span class="n">01</span><h3>Diversão garantida</h3><p>Adrenalina do começo ao fim, para amigos, família, aniversários e empresas.</p></div>
+        <div class="feat"><span class="n">02</span><h3>Estratégia e ação</h3><p>Modos de jogo que exigem trabalho em equipe, comunicação e sangue frio.</p></div>
+        <div class="feat"><span class="n">03</span><h3>Equipamento completo</h3><p>Marcador, máscara e colete de proteção. Você chega e já entra em campo.</p></div>
+        <div class="feat"><span class="n">04</span><h3>Segurança em 1º lugar</h3><p>Área de testes, orientação antes do jogo e equipe acompanhando as partidas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <div class="wrap">
+      <div class="gal-head reveal">
+        <div>
+          <p class="kicker">04 <span>/</span> Direto do campo</p>
+          <h2>Quem encarou <em>o apocalipse.</em></h2>
+        </div>
+        <a class="btn btn-line" href="https://www.instagram.com/paintballapocalipse16/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>@paintballapocalipse16</a>
+      </div>
+      <div class="gallery" data-stagger>
+        <figure class="g1"><img src="img/cartaz.jpg" alt="Cartaz: Você sobreviveria ao apocalipse? Monte seu time e venha provar" loading="lazy" style="object-position:50% 25%"><figcaption>Monte seu time</figcaption></figure>
+        <figure><img src="img/area-de-testes.jpg" alt="Jogadores com coletes de proteção na área de testes" loading="lazy" style="object-position:50% 35%"><figcaption>Área de testes</figcaption></figure>
+        <figure><img src="img/acao.jpg" alt="Jogador em ação na zona urbana" loading="lazy" style="object-position:30% 40%"><figcaption>Zona urbana</figcaption></figure>
+        <figure class="g4"><img src="img/banner.jpg" alt="Arte Paintball Apocalipse: bola de tinta em chamas sobre cidade em ruínas" loading="lazy" style="object-position:50% 55%"><figcaption>Paintball Apocalipse</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="eventos">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="kicker">05 <span>/</span> Missões especiais</p>
+        <h2>Toda tropa <em>tem sua missão.</em></h2>
+        <p class="lead">Além das partidas, rolam eventos e promoções ao longo do ano. Fique de olho no Instagram.</p>
+      </div>
+      <article class="event reveal">
+        <div class="event-img"><img src="img/missao-delas.jpg" alt="Cartaz do evento Missão Delas" loading="lazy"></div>
+        <div class="event-body">
+          <span class="tag">Evento especial</span>
+          <h3>Missão Delas</h3>
+          <p>Uma operação pensada para elas. Radical, divertida e com condições especiais.</p>
+          <ul>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Desconto para grupos femininos</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Vantagem estratégica para times com maioria feminina</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Condição especial para casais</li>
+          </ul>
+          <a class="btn btn-fire" style="align-self:flex-start" href="https://bit.ly/paintballapocalipse16" target="_blank" rel="noopener">Consultar próxima edição</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="reveal">
+        <p class="kicker">06 <span>/</span> Como funciona</p>
+        <h2>Do convite <em>ao primeiro tiro.</em></h2>
+      </div>
+      <div class="steps" data-stagger>
+        <div class="step"><h3>Monte seu time</h3><p>Reúna a galera: amigos, família, aniversário ou empresa.</p></div>
+        <div class="step"><h3>Reserve</h3><p>Chame no WhatsApp para ver datas, valores e disponibilidade.</p></div>
+        <div class="step"><h3>Equipe-se</h3><p>Na arena você recebe o equipamento e as orientações de segurança.</p></div>
+        <div class="step"><h3>Sobreviva</h3><p>Entre em campo e mostre quem manda no apocalipse.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="contato">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="kicker">07 <span>/</span> Contato</p>
+        <h2>Reporte-se <em>ao comando.</em></h2>
+        <p class="lead">Reservas, valores e horários direto pelo WhatsApp.</p>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="info">
+          <a class="info-item" href="https://bit.ly/paintballapocalipse16" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><div><small>WhatsApp</small><span>(21) 98785-8232</span></div></a>
+          <a class="info-item" href="https://www.instagram.com/paintballapocalipse16/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><div><small>Instagram</small><span>@paintballapocalipse16</span></div></a>
+          <a class="info-item" href="https://www.google.com/maps/search/?api=1&query=Estr.+Olegario+Dias,+115+-+Coqueiro,+Queimados+-+RJ,+26311-250" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><div><small>Endereço · ver rota</small><span>Estr. Olegário Dias, 115 - Coqueiro<br>Queimados - RJ, 26311-250</span></div></a>
+          <a class="btn btn-fire" href="https://bit.ly/paintballapocalipse16" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quero reservar</a>
+        </div>
+        <div class="map">
+          <iframe title="Mapa do Paintball Apocalipse 16" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Estr.+Olegario+Dias,+115+-+Coqueiro,+Queimados+-+RJ,+26311-250&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap reveal">
+      <h2>O fim do mundo<br><em>é o começo do jogo.</em></h2>
+      <p>Monte seu time e venha provar que você sobreviveria ao apocalipse.</p>
+      <a class="btn btn-fire" href="https://bit.ly/paintballapocalipse16" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reserve já</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Paintball Apocalipse 16 · Estr. Olegário Dias, 115 - Queimados, RJ</span>
+    <a href="https://www.instagram.com/paintballapocalipse16/" target="_blank" rel="noopener">@paintballapocalipse16</a>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://bit.ly/paintballapocalipse16" target="_blank" rel="noopener" aria-label="Reservar pelo WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+
+<script>
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // header sólido + parallax do hero
+  const header = $('#top'), heroImg = $('.hero-img');
+  const onScroll = () => {
+    header.classList.toggle('solid', scrollY > 40);
+    if (!calm && scrollY < innerHeight) heroImg.style.setProperty('--py', scrollY * 0.3 + 'px');
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // menu mobile
+  const burger = $('.burger');
+  const toggleMenu = open => {
+    header.classList.toggle('open', open);
+    document.body.classList.toggle('lock', open);
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  };
+  burger.onclick = () => toggleMenu(!header.classList.contains('open'));
+  $$('#menu a').forEach(a => a.onclick = () => toggleMenu(false));
+  addEventListener('keydown', e => e.key === 'Escape' && toggleMenu(false));
+
+  // brasas
+  const embers = $('.embers');
+  for (let i = 0; i < 22; i++) {
+    const s = document.createElement('i');
+    s.style.left = 30 + Math.random() * 70 + '%';
+    s.style.setProperty('--dx', (Math.random() * 100 - 50) + 'px');
+    s.style.animationDuration = 7 + Math.random() * 8 + 's';
+    s.style.animationDelay = -Math.random() * 15 + 's';
+    embers.appendChild(s);
+  }
+
+  // entrada ao rolar (com cascata nos grupos) + contadores
+  $$('[data-stagger]').forEach(g => [...g.children].forEach((c, i) => { c.classList.add('reveal'); c.style.setProperty('--d', i * 0.1 + 's'); }));
+  const count = el => {
+    const end = +el.dataset.count, t0 = performance.now();
+    const tick = t => { const p = Math.min((t - t0) / 1600, 1); el.textContent = Math.round(end * (1 - (1 - p) ** 3)).toLocaleString('pt-BR'); p < 1 && requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  };
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    if (e.target.dataset.count) count(e.target);
+    io.unobserve(e.target);
+  }), { threshold: .15 });
+  $$('.reveal, .steps, [data-count]').forEach(el => io.observe(el));
+
+  // carrossel do tour
+  const track = $('.track'), slides = $$('.slide', track), dots = $('.dots');
+  let current = 0, auto;
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', 'Foto ' + (i + 1));
+    b.onclick = () => { go(i); restart(); };
+    dots.appendChild(b);
+  });
+  const go = i => {
+    current = (i + slides.length) % slides.length;
+    track.scrollTo({ left: slides[current].offsetLeft - slides[0].offsetLeft });
+  };
+  const mark = i => {
+    current = i;
+    slides.forEach((s, j) => s.classList.toggle('active', j === i));
+    [...dots.children].forEach((d, j) => d.classList.toggle('on', j === i));
+  };
+  const slideIO = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && mark(slides.indexOf(e.target))), { root: track, threshold: .6 });
+  slides.forEach(s => slideIO.observe(s));
+  mark(0);
+  $('.prev').onclick = () => { go(current - 1); restart(); };
+  $('.next').onclick = () => { go(current + 1); restart(); };
+  const restart = () => { clearInterval(auto); auto = setInterval(() => go(current + 1), 5000); [...dots.children].forEach(d => d.classList.contains('on') && (d.classList.remove('on'), void d.offsetWidth, d.classList.add('on'))); };
+  ['pointerdown', 'wheel', 'touchstart'].forEach(ev => track.addEventListener(ev, restart, { passive: true }));
+  restart();
+
+  // troca de foto nos terrenos
+  const zones = $$('.zone'), zoneImgs = $$('.arena-photo img');
+  let zi = 0, zTimer;
+  const showZone = (i, held) => {
+    zi = i;
+    zones.forEach((z, j) => { z.classList.toggle('on', j === i); z.classList.toggle('held', !!held); z.setAttribute('aria-pressed', j === i); });
+    zoneImgs.forEach((im, j) => im.classList.toggle('on', j === i));
+  };
+  const cycle = () => { clearInterval(zTimer); zTimer = setInterval(() => showZone((zi + 1) % zones.length), 5000); };
+  zones.forEach((z, i) => {
+    z.onclick = () => { showZone(i, true); clearInterval(zTimer); };
+    z.onmouseenter = () => { showZone(i, true); clearInterval(zTimer); };
+  });
+  $('.zones').addEventListener('mouseleave', () => { showZone(zi); cycle(); });
+  showZone(0); cycle();
+</script>
+</body>
+</html>
